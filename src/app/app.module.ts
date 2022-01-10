@@ -16,6 +16,7 @@ import { CreatePolicyComponent } from './components/create-policy/create-policy.
 import { GenerateApiKeyComponent } from './components/generate-api-key/generate-api-key.component';
 import { IntegrationInstructionsComponent } from './components/integration-instructions/integration-instructions.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { TasksComponent } from './pages/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     OnboardingComponent,
     CreatePolicyComponent,
     GenerateApiKeyComponent,
-    IntegrationInstructionsComponent
+    IntegrationInstructionsComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

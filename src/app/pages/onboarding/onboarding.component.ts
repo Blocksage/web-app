@@ -8,7 +8,7 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 })
 export class OnboardingComponent implements OnInit {
   user: any
-  step = 'api'
+  step = 'policy'
   
   constructor(private storage: StorageService) { 
     this.user = this.storage.getItem('user')
