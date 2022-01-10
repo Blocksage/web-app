@@ -20,6 +20,19 @@ export const GqlConstants = {
         count
       }
     }
+  }`,
+
+  CREATE_POLICY: `mutation CreatePolicy($checklist:String, $details:String, $slug:String, $title: String) {
+    insert_policy_one(object: {checklist: $checklist, details: $details, slug: $slug, title: $title}) {
+      id
+      title
+    }
+  }`,
+
+  CREATE_KEY: `mutation CreateKey {
+    insert_keys_one(object: {}) {
+      id
+    }
   }`
   
   

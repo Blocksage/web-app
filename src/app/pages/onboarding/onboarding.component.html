@@ -17,7 +17,7 @@
     <div class="row mt-4">
         <div class="col card p-4 mb-5">
             <div class="create-policy" [hidden]="step != 'policy'">
-                <app-create-policy></app-create-policy>
+                <app-create-policy (policySaved)="step = 'api'"></app-create-policy>
             </div>
             <div class="generate-api-key" [hidden]="step != 'api'">
                 <app-generate-api-key></app-generate-api-key>
