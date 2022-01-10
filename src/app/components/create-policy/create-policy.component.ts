@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GqlConstants } from 'src/app/services/gql-constants/gql-constants.service';
 import { GraphqlService } from 'src/app/services/graphql/graphql.service';
 
@@ -11,6 +12,7 @@ import { GraphqlService } from 'src/app/services/graphql/graphql.service';
 export class CreatePolicyComponent implements OnInit {
   @Output() policySaved: EventEmitter<any> = new EventEmitter()
   public Editor = ClassicEditor
+
   constructor() { }
   policy: any = {
     details: ''

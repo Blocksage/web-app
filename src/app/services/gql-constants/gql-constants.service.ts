@@ -46,7 +46,18 @@ export const GqlConstants = {
     delete_keys_by_pk(id: $key) {
       id
     }
-  }`
+  }`,
   
+  GET_POLICIES: `query GetPolicies {
+    policy {
+      checklist
+      details
+      id
+      slug
+      title
+      createdAt
+      updatedAt
+    }
+  }`
   
 } as const

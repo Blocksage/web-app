@@ -1,1 +1,35 @@
-<p>policies works!</p>
+<div class="container">
+    <div class="row mb-3">
+        <div class="col">
+            <h3>Policies</h3>
+        </div>
+        <div class="col text-right">
+            <button (click)="createNewPolicy()" class="btn btn-outline-primary">Create New Policy</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table" *ngIf="policies && policies.length">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">slug</th>
+                    <th scope="col">created</th>
+                    <th scope="col">&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let policy of policies">
+                    <th scope="row">{{policy.title}}</th>
+                    <td>{{policy.slug}}</td>
+                    <td>{{policy.createdAt}}</td>
+                    <td>
+                        <a class="text-primary mr-3">Edit</a>
+                        <a class="text-danger">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
