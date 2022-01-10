@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-onboarding',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./onboarding.component.scss']
 })
 export class OnboardingComponent implements OnInit {
-
-  constructor() { }
+  user: any
+  step = 'policy'
+  
+  constructor(private storage: StorageService) { 
+    this.user = this.storage.getItem('user')
+  }
 
   ngOnInit(): void {
   }

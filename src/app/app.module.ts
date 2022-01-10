@@ -12,6 +12,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PoliciesComponent } from './pages/policies/policies.component';
 import { FormsModule } from '@angular/forms';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
+import { CreatePolicyComponent } from './components/create-policy/create-policy.component';
+import { GenerateApiKeyComponent } from './components/generate-api-key/generate-api-key.component';
+import { IntegrationInstructionsComponent } from './components/integration-instructions/integration-instructions.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -22,13 +26,17 @@ import { OnboardingComponent } from './pages/onboarding/onboarding.component';
     RegisterComponent,
     DashboardComponent,
     PoliciesComponent,
-    OnboardingComponent
+    OnboardingComponent,
+    CreatePolicyComponent,
+    GenerateApiKeyComponent,
+    IntegrationInstructionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,30 @@
-<p>onboarding works!</p>
+<div class="container">
+    <div class="row mb-5">
+        <div class="col text-center">
+            <h2>Welcome, {{user.firstName}}! Let's setup your account.</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <ul class="list-unstyled multi-steps">
+                <li [ngClass]="{'is-active': step=='policy'}" (click)="step = 'policy'">Create your first Policy</li>
+                <li [ngClass]="{'is-active': step=='api'}" (click)="step = 'api'">Generate an API Key</li>
+                <li [ngClass]="{'is-active': step=='integrate'}" (click)="step = 'integrate'">Integrate</li>
+              </ul>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col card p-4 mb-5">
+            <div class="create-policy" [hidden]="step != 'policy'">
+                <app-create-policy></app-create-policy>
+            </div>
+            <div class="generate-api-key" [hidden]="step != 'api'">
+                <app-generate-api-key></app-generate-api-key>
+            </div>
+            <div class="integration-instructions" [hidden]="step != 'integrate'">
+                <app-integration-instructions></app-integration-instructions>
+            </div>
+        </div>
+    </div>
+</div>
