@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PrivateComponent } from './layout/private/private.component';
 import { PublicComponent } from './layout/public/public.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { OnboardingComponent } from './pages/onboarding/onboarding.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'public/auth/login', pathMatch: 'full'},
@@ -11,7 +13,10 @@ const routes: Routes = [
     { path: 'auth/login', component: LoginComponent},
     { path: 'auth/register', component: RegisterComponent}
   ]},
-  { path: 'app/dashboard', component: DashboardComponent}
+  { path: 'app', component: PrivateComponent, children: [
+    { path: 'onboarding', component: OnboardingComponent},
+    { path: 'dashboard', component: DashboardComponent}
+  ]}
 ];
 
 @NgModule({

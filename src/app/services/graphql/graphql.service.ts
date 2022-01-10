@@ -6,15 +6,15 @@ import { environment } from '../../../environments/environment'
 })
 export class GraphqlService {
 
-  public client?: GraphQLClient
-  public publicClient: GraphQLClient = new GraphQLClient(environment.gqlEndpoint, {})
+  public static client?: GraphQLClient = new GraphQLClient(environment.gqlEndpoint, {
+                                            headers: {
+                                              'Authorization': 'Bearer ' + JSON.parse(window.localStorage.getItem('jwt') || '{}')
+                                            }
+                                          })
+  public static publicClient: GraphQLClient = new GraphQLClient(environment.gqlEndpoint, {})
 
   constructor() {
-    this.client = new GraphQLClient(environment.gqlEndpoint, {
-      headers: {
-        'Authorization': 'Bearer '
-      }
-    })
+    // this.client = 
   }
 
 

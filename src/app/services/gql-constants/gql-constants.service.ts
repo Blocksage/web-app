@@ -12,6 +12,14 @@ export const GqlConstants = {
       error
       token
     }
+  }`,
+
+  POLICY_COUNT: `query PolicyCount {
+    policy_aggregate {
+      aggregate {
+        count
+      }
+    }
   }`
   
   

@@ -4,6 +4,8 @@ import { GraphqlService } from 'src/app/services/graphql/graphql.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
+import { GraphQLClient } from 'graphql-request';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +16,17 @@ export class LoginComponent implements OnInit {
 
   user: any = {}
   err: string = ''
+  loginLabel = 'Login'
+
   constructor(private gql: GraphqlService, private storage: StorageService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   async login() {
+    this.loginLabel = 'Logging in...'
     try {
-      const response = await this.gql.publicClient.request(GqlConstants.LOGIN, {
+      const response = await GraphqlService.publicClient.request(GqlConstants.LOGIN, {
         email: this.user.email, 
         password: this.user.password
       })
@@ -30,10 +35,13 @@ export class LoginComponent implements OnInit {
       const user = jwt.decodeToken(token)
       this.storage.setItem('jwt', token)
       this.storage.setItem('user', user)
+      GraphqlService.client = new GraphQLClient(environment.gqlEndpoint, {headers: {'Authorization': 'Bearer ' + token}})
       this.router.navigate(['app', 'dashboard'])
     } catch(err) {
       console.error(err)
       this.err = 'Sorry! Could not find a user with the given details.'
+    } finally {
+      this.loginLabel = 'Login'
     }
   }
 

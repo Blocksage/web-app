@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { GraphQLClient } from 'graphql-request';
 import { GqlConstants } from 'src/app/services/gql-constants/gql-constants.service';
 import { GraphqlService } from 'src/app/services/graphql/graphql.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -24,12 +26,13 @@ export class RegisterComponent implements OnInit {
   async register() {
     this.registerButtonLabel = 'Completing registration...'
     try {
-      const response = await this.gql.publicClient.request(GqlConstants.REGISTER, this.user)
+      const response = await GraphqlService.publicClient.request(GqlConstants.REGISTER, this.user)
       const token = response.register.token
       const jwt = new JwtHelperService()
       const user = jwt.decodeToken(token)
       this.storage.setItem('jwt', token)
       this.storage.setItem('user', user)
+      GraphqlService.client = new GraphQLClient(environment.gqlEndpoint, {headers: {'Authorization': 'Bearer ' + token}})
       this.router.navigate(['app', 'dashboard'])
       // Do something with the new user
     } catch (err) {
