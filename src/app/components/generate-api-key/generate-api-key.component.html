@@ -1,1 +1,37 @@
-<p>generate-api-key works!</p>
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <h3>API Keys</h3>
+                <p *ngIf="!keys || keys.length == 0">
+                    Generate your first API key.
+                </p>
+                <table class="table" *ngIf="keys && keys.length">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">API Key</th>
+                        <th scope="col">Created On</th>
+                        <th scope="col">&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let key of keys">
+                        <th scope="row">{{key.id}}</th>
+                        <td>{{key.createdAt}}</td>
+                        <td (click)="deleteKey(key.id)" role="button" class="text-danger cursor-pointer">Delete</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="text-center">
+                    <button class="btn btn-outline-primary mr-2" (click)="generateKey()">Generate new API Key</button>
+                    <button *ngIf="keys && keys.length" (click)="emitComplete()" class="btn btn-primary">Start Integrating</button>
+                  </div>
+                  
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

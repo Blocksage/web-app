@@ -20,7 +20,7 @@
                 <app-create-policy (policySaved)="step = 'api'"></app-create-policy>
             </div>
             <div class="generate-api-key" [hidden]="step != 'api'">
-                <app-generate-api-key></app-generate-api-key>
+                <app-generate-api-key (completed)="step = 'integrate'"></app-generate-api-key>
             </div>
             <div class="integration-instructions" [hidden]="step != 'integrate'">
                 <app-integration-instructions></app-integration-instructions>

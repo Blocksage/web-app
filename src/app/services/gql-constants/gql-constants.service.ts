@@ -33,6 +33,19 @@ export const GqlConstants = {
     insert_keys_one(object: {}) {
       id
     }
+  }`,
+
+  LIST_KEYS: `query ListKeys {
+    keys {
+      id
+      createdAt
+    }
+  }`,
+
+  DELETE_KEY: `mutation DeleteKey($key:uuid!) {
+    delete_keys_by_pk(id: $key) {
+      id
+    }
   }`
   
   
