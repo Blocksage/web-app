@@ -6,23 +6,24 @@
         <div class="form">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text"  [(ngModel)]="policy.title" (change)="generateSlug()" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Policy Title (e.g. Violence Policy)">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <input type="text"  [(ngModel)]="policy.title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Policy Title (e.g. Violence Policy)">
+                <small id="emailHelp" class="form-text text-muted">This is for your internal purposes.</small>
             </div>
             <div class="form-group">
-                <label for="title">Slug</label>
-                <input type="text" [(ngModel)]="policy.slug" class="form-control" id="title" aria-describedby="emailHelp" placeholder="violence-policy">
-                <small id="emailHelp" class="form-text text-muted">This must be unique across policies</small>
+                <label for="title">Label</label>
+                <input type="text" [(ngModel)]="policy.slug" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Violence">
+                <small id="emailHelp" class="form-text text-muted">Example: In case of Violence Policy, it will be "Violence"</small>
             </div>
             <div class="form-group">
                 <label for="description">Details</label>
-                <ckeditor [(ngModel)]="policy.details" id="description" [editor]="Editor"></ckeditor>
+                <input type="text" [(ngModel)]="policy.details" class="form-control" id="title" aria-describedby="emailHelp" placeholder="https://example.com">
+                <small id="emailHelp" class="form-text text-muted">URL for the detailed policy</small>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Checklist</label>
-                <textarea [(ngModel)]="policy.checklist" class="form-control" id="checklist">- 
-- 
-                </textarea>
+                <ckeditor [(ngModel)]="policy.checklist" id="description" [editor]="Editor"></ckeditor>
+                <!-- <textarea [(ngModel)]="policy.checklist" class="form-control" id="checklist">-  -->
+                <!-- </textarea> -->
             </div>
            
             <button class="btn btn-primary btn-block" (click)="savePolicy()">Save Policy</button>

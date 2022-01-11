@@ -15,7 +15,7 @@ export class CreatePolicyComponent implements OnInit {
 
   constructor() { }
   policy: any = {
-    details: ''
+    checklist: ''
   }
 
   ngOnInit(): void {
